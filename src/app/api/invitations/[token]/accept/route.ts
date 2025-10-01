@@ -6,9 +6,10 @@ import { InvitationService } from "@/lib/services/invitation.service"
 // POST /api/invitations/[token]/accept - Accepter une invitation
 export async function POST(
   req: Request,
-  { params }: { params: { token: string } }
+  context: { params: Promise<{ token: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = createClient()
     const {
       data: { user },

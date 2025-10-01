@@ -5,9 +5,10 @@ import type { NextRequest } from "next/server"
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { token: string } }
+  context: { params: Promise<{ token: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = await createClient()
     const invitationToken = params.token
 

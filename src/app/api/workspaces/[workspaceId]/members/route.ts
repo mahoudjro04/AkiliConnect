@@ -6,9 +6,10 @@ import type { NextRequest } from "next/server"
 // GET /api/workspaces/[workspaceId]/members
 export async function GET(
   request: NextRequest,
-  { params }: { params: { workspaceId: string } }
+  context: { params: Promise<{ workspaceId: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = await createClient()
     const workspaceId = params.workspaceId
 
@@ -71,9 +72,10 @@ export async function GET(
 // DELETE /api/workspaces/[workspaceId]/members?userId=...
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { workspaceId: string } }
+  context: { params: Promise<{ workspaceId: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = await createClient()
     const workspaceId = params.workspaceId
     const { searchParams } = new URL(request.url)

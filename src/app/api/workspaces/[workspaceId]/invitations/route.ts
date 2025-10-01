@@ -9,9 +9,10 @@ import { InvitationService } from "@/lib/services/invitation.service"
 // POST /api/workspaces/[workspaceId]/invitations
 export async function POST(
   req: Request,
-  { params }: { params: { workspaceId: string } }
+  context: { params: Promise<{ workspaceId: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = createClient()
     const {
       data: { user },
@@ -110,9 +111,10 @@ export async function POST(
 // GET /api/workspaces/[workspaceId]/invitations
 export async function GET(
   req: Request,
-  { params }: { params: { workspaceId: string } }
+  context: { params: Promise<{ workspaceId: string }> }
 ) {
   try {
+    const params = await context.params
     const supabase = createClient()
     const {
       data: { user },

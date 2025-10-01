@@ -5,9 +5,10 @@ import { InvitationService } from "@/lib/services/invitation.service"
 // GET /api/invitations/[token] - Vérifier une invitation
 export async function GET(
   req: Request,
-  { params }: { params: { token: string } }
+  context: { params: Promise<{ token: string }> }
 ) {
   try {
+    const params = await context.params
     const token = params.token
 
     if (!token) {

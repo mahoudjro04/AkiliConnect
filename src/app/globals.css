@@ -1,16 +1,10 @@
+/* Tailwind CSS v4 - Ignore unknown at-rules warnings */
+/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 @import "./themes.css";
 
-/* .home-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
- */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

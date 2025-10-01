@@ -12,8 +12,8 @@
     "settings": "Paramètres"
   },
   "userNav": {
-      "profile": "Profil",
-      "settings": "Paramètre",
-      "signOut": "Déconnexion"
-    }
+    "profile": "Profil",
+    "settings": "Paramètre",
+    "signOut": "Déconnexion"
+  }
 }

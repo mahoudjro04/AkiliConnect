@@ -19,5 +19,17 @@
   "files.eol": "\n",
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "stylelint.enable": false,
+  "tailwindCSS.experimental.configFile": null,
+  "tailwindCSS.includeLanguages": {
+    "css": "css",
+    "scss": "scss"
+  },
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ]
 }

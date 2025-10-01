@@ -5,18 +5,21 @@
 ## ✨ Fonctionnalités Principales
 
 ### 🏢 Gestion d'Organisation
+
 - **Multi-tenant** : Support pour plusieurs organisations
 - **Espaces de travail** : Création et gestion d'espaces collaboratifs
 - **Gestion des membres** : Invitation, rôles et permissions
 - **Administration avancée** : Tableau de bord admin complet
 
 ### 👥 Collaboration
+
 - **Invitations** : Système d'invitation par email
 - **Rôles et permissions** : Contrôle d'accès granulaire
 - **Tableaux de bord** : Analytics et métriques en temps réel
 - **Interface multilingue** : Support i18n intégré
 
 ### 🛡️ Sécurité & Authentication
+
 - **Supabase Auth** : Authentification sécurisée
 - **Service Role** : Administration privilégiée
 - **Sessions** : Gestion avancée des sessions utilisateur
@@ -25,6 +28,7 @@
 ## 🛠️ Stack Technique
 
 ### Frontend
+
 - **Next.js 15** - Framework React avec App Router
 - **TypeScript** - Typage statique
 - **Tailwind CSS** - Framework CSS utilitaire
@@ -32,12 +36,14 @@
 - **Radix UI** - Primitives d'interface accessibles
 
 ### Backend & Base de Données
+
 - **Supabase** - Backend-as-a-Service
 - **PostgreSQL** - Base de données relationnelle
 - **Row Level Security** - Sécurité au niveau des lignes
 - **Real-time** - Mises à jour en temps réel
 
 ### Outils de Développement
+
 - **ESLint** - Linting de code
 - **Prettier** - Formatage de code
 - **TypeScript** - Vérification de types
@@ -52,12 +58,14 @@
 ## 🚀 Installation
 
 ### 1. Cloner le projet
+
 ```bash
 git clone https://github.com/mahoudjro04/AkiliConnect.git
 cd AkiliConnect
 ```
 
 ### 2. Installer les dépendances
+
 ```bash
 pnpm install
 ```
@@ -85,6 +93,7 @@ NEXTAUTH_URL=http://localhost:3000
 4. Activez Row Level Security
 
 ### 5. Lancer le serveur de développement
+
 ```bash
 pnpm dev
 ```
@@ -140,6 +149,7 @@ akiliConnect/
 ### Supabase Schema
 
 Le projet utilise les tables principales suivantes :
+
 - `organizations` - Organisations/entreprises
 - `workspaces` - Espaces de travail
 - `workspace_members` - Membres des espaces
@@ -147,29 +157,32 @@ Le projet utilise les tables principales suivantes :
 
 ### Variables d'Environnement
 
-| Variable | Description | Requis |
-|----------|-------------|---------|
-| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase | ✅ |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé publique Supabase | ✅ |
-| `SUPABASE_SERVICE_ROLE_KEY` | Clé service role (admin) | ✅ |
-| `NEXTAUTH_SECRET` | Secret pour NextAuth | ✅ |
-| `NEXTAUTH_URL` | URL de base de l'application | ✅ |
+| Variable                        | Description                  | Requis |
+| ------------------------------- | ---------------------------- | ------ |
+| `NEXT_PUBLIC_SUPABASE_URL`      | URL du projet Supabase       | ✅     |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé publique Supabase        | ✅     |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Clé service role (admin)     | ✅     |
+| `NEXTAUTH_SECRET`               | Secret pour NextAuth         | ✅     |
+| `NEXTAUTH_URL`                  | URL de base de l'application | ✅     |
 
 ## 🌍 Fonctionnalités Avancées
 
 ### Administration
+
 - Dashboard administrateur avec statistiques
 - Gestion globale des utilisateurs
 - Surveillance des organisations et espaces
 - Métriques en temps réel
 
 ### Multi-tenant
+
 - Isolation des données par organisation
 - Espaces de travail dédiés
 - Permissions granulaires
 - Facturation par organisation
 
 ### Internationalisation
+
 - Support multilingue intégré
 - Détection automatique de la langue
 - URLs localisées
@@ -223,19 +236,23 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 #### 4. Configuration Supabase pour la Production
 
 1. **Domaines autorisés** : Ajoutez votre domaine Vercel dans Supabase
-   ```
-   Authentication > URL Configuration > Site URL:
-   https://your-domain.vercel.app
-   
-   Redirect URLs:
-   https://your-domain.vercel.app/api/auth/callback
-   ```
+```
+
+Authentication > URL Configuration > Site URL:
+https://your-domain.vercel.app
+
+Redirect URLs:
+https://your-domain.vercel.app/api/auth/callback
+
+```
 
 2. **CORS** : Autorisez votre domaine dans les paramètres API
-   ```
-   Settings > API > CORS Origins:
-   https://your-domain.vercel.app
-   ```
+```
+
+Settings > API > CORS Origins:
+https://your-domain.vercel.app
+
+````
 
 #### 5. Optimisations pour la Production
 
@@ -243,37 +260,38 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```javascript
 // next.config.mjs - Optimisations déjà configurées
 module.exports = {
-  // Compression automatique
-  compress: true,
-  
-  // Optimisation des images
-  images: {
-    domains: ['your-supabase-url.supabase.co'],
-    formats: ['image/webp', 'image/avif'],
-  },
-  
-  // Headers de sécurité
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-        ],
-      },
-    ]
-  },
+// Compression automatique
+compress: true,
+
+// Optimisation des images
+images: {
+ domains: ['your-supabase-url.supabase.co'],
+ formats: ['image/webp', 'image/avif'],
+},
+
+// Headers de sécurité
+async headers() {
+ return [
+   {
+     source: '/(.*)',
+     headers: [
+       {
+         key: 'X-Frame-Options',
+         value: 'DENY',
+       },
+       {
+         key: 'X-Content-Type-Options',
+         value: 'nosniff',
+       },
+     ],
+   },
+ ]
+},
 }
-```
+````
 
 ##### Base de données
+
 - Activez **Connection Pooling** sur Supabase
 - Configurez **Row Level Security (RLS)**
 - Optimisez les index pour les requêtes fréquentes
@@ -289,6 +307,7 @@ pnpm add @vercel/speed-insights
 ```
 
 Ajoutez dans `src/app/layout.tsx` :
+
 ```typescript
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -316,6 +335,7 @@ export default function RootLayout({ children }) {
 ### Déploiement Continu
 
 Vercel se connecte automatiquement à votre repository GitHub :
+
 - ✅ **Push sur `main`** → Déploiement en production
 - ✅ **Pull Request** → Preview deployment automatique
 - ✅ **Rollback** → Restauration rapide en cas de problème
@@ -325,12 +345,14 @@ Vercel se connecte automatiquement à votre repository GitHub :
 #### Erreurs courantes
 
 1. **Build Failed** - Vérifiez les types TypeScript
+
    ```bash
    pnpm lint
    pnpm build
    ```
 
 2. **Environment Variables** - Vérifiez dans Vercel Dashboard
+
    ```bash
    vercel env ls
    ```
@@ -340,6 +362,7 @@ Vercel se connecte automatiquement à votre repository GitHub :
 4. **Authentication Issues** - Vérifiez `NEXTAUTH_URL` et les redirects
 
 #### Logs de déploiement
+
 ```bash
 # Voir les logs de fonction
 vercel logs your-deployment-url
@@ -351,6 +374,7 @@ vercel logs --follow
 ### Performance en Production
 
 Votre application devrait atteindre :
+
 - ⚡ **99+ Performance Score** (Lighthouse)
 - 🎯 **< 2s** Time to Interactive
 - 📱 **100% Responsive** sur tous les appareils
@@ -365,6 +389,7 @@ Votre application devrait atteindre :
 5. Ouvrez une **Pull Request**
 
 ### Standards de Code
+
 - Suivre les règles ESLint configurées
 - Utiliser Prettier pour le formatage
 - Écrire des tests pour les nouvelles fonctionnalités
@@ -377,6 +402,7 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 ## 👨‍💻 Auteur
 
 **Armand Mahoudjro**
+
 - GitHub: [@mahoudjro04](https://github.com/mahoudjro04)
 - Email: armandatakoun04@gmail.com
 

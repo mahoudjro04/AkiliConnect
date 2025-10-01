@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "workspace": "Espace de travail",
+    "organization": "Organisation",
+    "administration": "Administration",
+    "members": "Membres",
+    "workspaces": "Espaces de travail",
+    "organizations": "Organisations",
+    "users": "Utilisateurs",
+    "systemSettings": "Paramètres système",
+    "settings": "Paramètres"
+  },
+  "userNav": {
+      "profile": "Profil",
+      "settings": "Paramètre",
+      "signOut": "Déconnexion"
+    }
+}

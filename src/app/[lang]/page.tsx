@@ -1,11 +1,14 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/supabase/server"
 
+import type { LocaleType } from "@/types"
+
 export default async function HomePage({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: LocaleType }>
 }) {
+  const { lang } = await params
   const supabase = await createClient()
   try {
     const {
@@ -13,14 +16,14 @@ export default async function HomePage({
     } = await supabase.auth.getUser()
     if (user) {
       // If the user is logged in, redirect to the workspace
-      redirect(`/${params.lang}/workspace`)
+      redirect(`/${lang}/workspace`)
     } else {
       // If the user is not logged in, redirect to the landing page
-      redirect(`/${params.lang}/pages/landing`)
+      redirect(`/${lang}/pages/landing`)
     }
   } catch (_error) {
     // If there is an error, redirect to the login page
-    redirect(`/${params.lang}/sign-in`)
+    redirect(`/${lang}/sign-in`)
   }
   return null
 }

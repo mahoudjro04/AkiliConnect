@@ -195,9 +195,9 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 
 ## 👨‍💻 Auteur
 
-**Modeste KKN**
+**Armand Mahoudjro**
 - GitHub: [@mahoudjro04](https://github.com/mahoudjro04)
-- Email: your.email@example.com
+- Email: armandatakoun04@gmail.com
 
 ## 🙏 Remerciements
 

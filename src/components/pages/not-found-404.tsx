@@ -3,11 +3,11 @@ import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 
-export function NotFound404() {
-  // Récupère la langue courante depuis le chemin
-  const pathname = typeof window !== "undefined" ? window.location.pathname : ""
-  const langMatch = pathname.match(/^\/([a-zA-Z-]+)\//)
-  const lang = langMatch ? langMatch[1] : "en"
+interface NotFound404Props {
+  lang?: string
+}
+
+export function NotFound404({ lang = "en" }: NotFound404Props) {
   const landingUrl = `/${lang}/pages/landing`
 
   return (

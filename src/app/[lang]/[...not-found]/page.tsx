@@ -1,5 +1,13 @@
+import type { LocaleType } from "@/types"
+
 import { NotFound404 } from "@/components/pages/not-found-404"
 
-export default function NotFoundPage() {
-  return <NotFound404 />
+interface NotFoundPageProps {
+  params: Promise<{ lang: LocaleType }>
+}
+
+export default async function NotFoundPage({ params }: NotFoundPageProps) {
+  const { lang } = await params
+
+  return <NotFound404 lang={lang} />
 }

@@ -1,36 +1,213 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 AkiliConnect
 
-## Getting Started
+**AkiliConnect** est une plateforme moderne de gestion collaborative conçue pour connecter les équipes, gérer les organisations et optimiser les flux de travail. Construite avec Next.js 15 et Supabase, elle offre une expérience utilisateur exceptionnelle avec des fonctionnalités avancées d'administration et de collaboration.
 
-First, run the development server:
+## ✨ Fonctionnalités Principales
 
+### 🏢 Gestion d'Organisation
+- **Multi-tenant** : Support pour plusieurs organisations
+- **Espaces de travail** : Création et gestion d'espaces collaboratifs
+- **Gestion des membres** : Invitation, rôles et permissions
+- **Administration avancée** : Tableau de bord admin complet
+
+### 👥 Collaboration
+- **Invitations** : Système d'invitation par email
+- **Rôles et permissions** : Contrôle d'accès granulaire
+- **Tableaux de bord** : Analytics et métriques en temps réel
+- **Interface multilingue** : Support i18n intégré
+
+### 🛡️ Sécurité & Authentication
+- **Supabase Auth** : Authentification sécurisée
+- **Service Role** : Administration privilégiée
+- **Sessions** : Gestion avancée des sessions utilisateur
+- **Confirmation email** : Vérification des comptes
+
+## 🛠️ Stack Technique
+
+### Frontend
+- **Next.js 15** - Framework React avec App Router
+- **TypeScript** - Typage statique
+- **Tailwind CSS** - Framework CSS utilitaire
+- **shadcn/ui** - Composants UI modernes
+- **Radix UI** - Primitives d'interface accessibles
+
+### Backend & Base de Données
+- **Supabase** - Backend-as-a-Service
+- **PostgreSQL** - Base de données relationnelle
+- **Row Level Security** - Sécurité au niveau des lignes
+- **Real-time** - Mises à jour en temps réel
+
+### Outils de Développement
+- **ESLint** - Linting de code
+- **Prettier** - Formatage de code
+- **TypeScript** - Vérification de types
+- **pnpm** - Gestionnaire de paquets rapide
+
+## 📋 Prérequis
+
+- **Node.js** ≥ 22.0.0
+- **pnpm** ≥ 10.0.0
+- **Compte Supabase** (gratuit)
+
+## 🚀 Installation
+
+### 1. Cloner le projet
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mahoudjro04/AkiliConnect.git
+cd AkiliConnect
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Installer les dépendances
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Configuration de l'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Créez un fichier `.env.local` à la racine du projet :
 
-## Learn More
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
-To learn more about Next.js, take a look at the following resources:
+# Authentication
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Configuration Supabase
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Créez un nouveau projet sur [Supabase](https://supabase.com)
+2. Exécutez les migrations SQL (voir `/sql` pour les schémas)
+3. Configurez l'authentification par email
+4. Activez Row Level Security
 
-## Deploy on Vercel
+### 5. Lancer le serveur de développement
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+L'application sera disponible sur [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📱 Scripts Disponibles
+
+```bash
+# Développement
+pnpm dev          # Serveur de développement (avec Turbopack)
+pnpm dev:turbo    # Serveur de développement optimisé
+
+# Production
+pnpm build        # Build de production
+pnpm start        # Serveur de production
+
+# Qualité de code
+pnpm lint         # Vérification ESLint
+pnpm lint:fix     # Correction automatique ESLint
+pnpm format       # Formatage avec Prettier
+```
+
+## 🏗️ Structure du Projet
+
+```
+akiliConnect/
+├── src/
+│   ├── app/                    # App Router Next.js
+│   │   ├── api/               # Routes API
+│   │   │   ├── admin/         # APIs administration
+│   │   │   ├── auth/          # Authentification
+│   │   │   └── invite/        # Système d'invitation
+│   │   ├── dashboard/         # Tableaux de bord
+│   │   │   ├── admin/         # Interface admin
+│   │   │   ├── members/       # Gestion des membres
+│   │   │   └── organization/  # Gestion organisation
+│   │   └── [lang]/           # Support multilingue
+│   ├── components/            # Composants réutilisables
+│   │   ├── ui/               # Composants UI de base
+│   │   └── forms/            # Composants de formulaire
+│   ├── lib/                  # Utilitaires et configurations
+│   ├── hooks/                # Hooks React personnalisés
+│   ├── types/                # Définitions TypeScript
+│   └── utils/                # Fonctions utilitaires
+├── public/                   # Fichiers statiques
+├── docs/                     # Documentation
+└── sql/                      # Migrations de base de données
+```
+
+## 🔧 Configuration
+
+### Supabase Schema
+
+Le projet utilise les tables principales suivantes :
+- `organizations` - Organisations/entreprises
+- `workspaces` - Espaces de travail
+- `workspace_members` - Membres des espaces
+- `invitations` - Invitations utilisateur
+
+### Variables d'Environnement
+
+| Variable | Description | Requis |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase | ✅ |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé publique Supabase | ✅ |
+| `SUPABASE_SERVICE_ROLE_KEY` | Clé service role (admin) | ✅ |
+| `NEXTAUTH_SECRET` | Secret pour NextAuth | ✅ |
+| `NEXTAUTH_URL` | URL de base de l'application | ✅ |
+
+## 🌍 Fonctionnalités Avancées
+
+### Administration
+- Dashboard administrateur avec statistiques
+- Gestion globale des utilisateurs
+- Surveillance des organisations et espaces
+- Métriques en temps réel
+
+### Multi-tenant
+- Isolation des données par organisation
+- Espaces de travail dédiés
+- Permissions granulaires
+- Facturation par organisation
+
+### Internationalisation
+- Support multilingue intégré
+- Détection automatique de la langue
+- URLs localisées
+- Interface adaptative
+
+## 🤝 Contribution
+
+1. **Fork** le projet
+2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
+3. **Commit** vos changements (`git commit -m 'Add: Amazing Feature'`)
+4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrez une **Pull Request**
+
+### Standards de Code
+- Suivre les règles ESLint configurées
+- Utiliser Prettier pour le formatage
+- Écrire des tests pour les nouvelles fonctionnalités
+- Documenter les APIs et fonctions importantes
+
+## 📝 Licence
+
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 👨‍💻 Auteur
+
+**Modeste KKN**
+- GitHub: [@mahoudjro04](https://github.com/mahoudjro04)
+- Email: your.email@example.com
+
+## 🙏 Remerciements
+
+- [Next.js](https://nextjs.org/) pour le framework React
+- [Supabase](https://supabase.com/) pour le backend
+- [shadcn/ui](https://ui.shadcn.com/) pour les composants UI
+- [Radix UI](https://www.radix-ui.com/) pour les primitives accessibles
+
+---
+
+⭐ **Star ce projet** si vous le trouvez utile !
+
+📫 **Questions ?** N'hésitez pas à ouvrir une [issue](https://github.com/mahoudjro04/AkiliConnect/issues)

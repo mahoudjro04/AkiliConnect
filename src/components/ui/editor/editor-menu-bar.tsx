@@ -150,10 +150,10 @@ interface AlignmentType {
 }
 
 const alignments: AlignmentType[] = [
-  { alignment: "left", iconName: "AlignLeft" },
-  { alignment: "center", iconName: "AlignCenter" },
-  { alignment: "right", iconName: "AlignRight" },
-  { alignment: "justify", iconName: "AlignJustify" },
+  { alignment: "left", iconName: "AlignStartVertical" },
+  { alignment: "center", iconName: "AlignCenterVertical" },
+  { alignment: "right", iconName: "AlignEndVertical" },
+  { alignment: "justify", iconName: "TextAlignJustify" },
 ]
 
 function AlignmentHandler({

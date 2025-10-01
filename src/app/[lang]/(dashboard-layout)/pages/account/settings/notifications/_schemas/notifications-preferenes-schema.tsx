@@ -1,4 +1,4 @@
-/* import { z } from "zod"
+import { z } from "zod"
 
 export const NotificationPreferencesSchema = z.object({
   security: z.object({
@@ -17,4 +17,3 @@ export const NotificationPreferencesSchema = z.object({
     sms: z.boolean(),
   }),
 })
- */

@@ -144,7 +144,7 @@ akiliConnect/
 └── sql/                      # Migrations de base de données
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Supabase Schema
 
@@ -159,13 +159,11 @@ Le projet utilise les tables principales suivantes :
 
 | Variable                        | Description                  | Requis |
 | ------------------------------- | ---------------------------- | ------ |
-| `NEXT_PUBLIC_SUPABASE_URL`      | URL du projet Supabase       | ✅     |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé publique Supabase        | ✅     |
-| `SUPABASE_SERVICE_ROLE_KEY`     | Clé service role (admin)     | ✅     |
-| `NEXTAUTH_SECRET`               | Secret pour NextAuth         | ✅     |
-| `NEXTAUTH_URL`                  | URL de base de l'application | ✅     |
+| `NEXT_PUBLIC_SUPABASE_URL`      | URL du projet Supabase       |      |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé publique Supabase        |      |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Clé service role (admin)     |      |
 
-## 🌍 Fonctionnalités Avancées
+## Fonctionnalités Avancées
 
 ### Administration
 
@@ -188,7 +186,7 @@ Le projet utilise les tables principales suivantes :
 - URLs localisées
 - Interface adaptative
 
-## 🚀 Déploiement sur Vercel
+## Déploiement sur Vercel
 
 ### Déploiement Automatique
 
@@ -336,9 +334,9 @@ export default function RootLayout({ children }) {
 
 Vercel se connecte automatiquement à votre repository GitHub :
 
-- ✅ **Push sur `main`** → Déploiement en production
-- ✅ **Pull Request** → Preview deployment automatique
-- ✅ **Rollback** → Restauration rapide en cas de problème
+-  **Push sur `main`** → Déploiement en production
+-  **Pull Request** → Preview deployment automatique
+-  **Rollback** → Restauration rapide en cas de problème
 
 ### Troubleshooting
 
@@ -375,12 +373,12 @@ vercel logs --follow
 
 Votre application devrait atteindre :
 
-- ⚡ **99+ Performance Score** (Lighthouse)
-- 🎯 **< 2s** Time to Interactive
-- 📱 **100% Responsive** sur tous les appareils
-- 🔒 **A+ Security Headers**
+-  **99+ Performance Score** (Lighthouse)
+-  **< 2s** Time to Interactive
+-  **100% Responsive** sur tous les appareils
+-  **A+ Security Headers**
 
-## 🤝 Contribution
+## Contribution
 
 1. **Fork** le projet
 2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
@@ -395,18 +393,17 @@ Votre application devrait atteindre :
 - Écrire des tests pour les nouvelles fonctionnalités
 - Documenter les APIs et fonctions importantes
 
-## 📝 Licence
+## Licence
 
 Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## 👨‍💻 Auteur
+## Auteur
 
 **Armand Mahoudjro**
 
 - GitHub: [@mahoudjro04](https://github.com/mahoudjro04)
 - Email: armandatakoun04@gmail.com
-
-## 🙏 Remerciements
+- Email: kouakanoumodeste88@gmail.com
 
 - [Next.js](https://nextjs.org/) pour le framework React
 - [Supabase](https://supabase.com/) pour le backend
@@ -415,6 +412,6 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 
 ---
 
-⭐ **Star ce projet** si vous le trouvez utile !
+ **Star ce projet** si vous le trouvez utile !
 
-📫 **Questions ?** N'hésitez pas à ouvrir une [issue](https://github.com/mahoudjro04/AkiliConnect/issues)
+ **Questions ?** N'hésitez pas à ouvrir une [issue](https://github.com/mahoudjro04/AkiliConnect/issues)

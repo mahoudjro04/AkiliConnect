@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
 import {
@@ -43,7 +43,8 @@ interface InvitationData {
   }
 }
 
-export default function InvitePage() {
+// Composant qui utilise useSearchParams
+function InvitePageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
@@ -329,5 +330,30 @@ export default function InvitePage() {
         </CardFooter>
       </Card>
     </div>
+  )
+}
+
+// Composant de fallback pour Suspense
+function InvitePageSkeleton() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <Card className="w-full max-w-md">
+        <CardContent className="flex items-center justify-center p-8">
+          <div className="flex items-center gap-3">
+            <Loader2 className="size-6 animate-spin" />
+            <span>Loading invitation...</span>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+// Page principale avec Suspense
+export default function InvitePage() {
+  return (
+    <Suspense fallback={<InvitePageSkeleton />}>
+      <InvitePageContent />
+    </Suspense>
   )
 }

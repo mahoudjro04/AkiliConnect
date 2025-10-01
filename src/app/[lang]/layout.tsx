@@ -14,6 +14,7 @@ import type { ReactNode } from "react"
 import { AuthProvider } from "@/hooks/use-auth"
 import { Toaster as Sonner } from "@/components/ui/sonner"
 import { Toaster } from "@/components/ui/toaster"
+import { HtmlAttributes } from "@/components/html-attributes"
 
 // Define metadata for the application
 // More info: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
@@ -49,7 +50,7 @@ const cairoFont = Cairo({
   display: "swap",
 })
 
-export default async function RootLayout(props: {
+export default async function LangLayout(props: {
   children: ReactNode
   params: Promise<{ lang: LocaleType }>
 }) {
@@ -58,21 +59,21 @@ export default async function RootLayout(props: {
   const direction = i18n.localeDirection[params.lang]
 
   return (
-    <html lang={params.lang} dir={direction} suppressHydrationWarning>
-      <body
-        className={cn(
-          "[&:lang(en)]:font-roboto [&:lang(fr)]:font-poppins [&:lang(ar)]:font-cairo",
-          robotoFont.variable,
-          poppinsFont.variable,
-          cairoFont.variable
-        )}
-      >
-        <Providers locale={params.lang} direction={direction}>
-          <AuthProvider>{children}</AuthProvider>
-          <Toaster />
-          <Sonner />
-        </Providers>
-      </body>
-    </html>
+    <div
+      dir={direction}
+      className={cn(
+        "[&:lang(en)]:font-roboto [&:lang(fr)]:font-poppins [&:lang(ar)]:font-cairo",
+        robotoFont.variable,
+        poppinsFont.variable,
+        cairoFont.variable
+      )}
+    >
+      <HtmlAttributes lang={params.lang} dir={direction} />
+      <Providers locale={params.lang} direction={direction}>
+        <AuthProvider>{children}</AuthProvider>
+        <Toaster />
+        <Sonner />
+      </Providers>
+    </div>
   )
 }

@@ -4,10 +4,16 @@ import { updateSession } from "@/supabase/middleware"
 import type { NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest) {
-  // Rediriger la racine vers /en
-  if (request.nextUrl.pathname === "/en") {
-    return NextResponse.redirect(new URL("/en", request.url))
+  // Rediriger la racine vers /en/sign-in
+  if (request.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/en/sign-in", request.url))
   }
+
+  // Rediriger /en vers /en/sign-in pour éviter les boucles
+  if (request.nextUrl.pathname === "/en") {
+    return NextResponse.redirect(new URL("/en/sign-in", request.url))
+  }
+
   // update user's auth session pour les autres routes
   return await updateSession(request)
 }

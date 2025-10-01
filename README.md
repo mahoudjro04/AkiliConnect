@@ -175,6 +175,187 @@ Le projet utilise les tables principales suivantes :
 - URLs localisées
 - Interface adaptative
 
+## 🚀 Déploiement sur Vercel
+
+### Déploiement Automatique
+
+La méthode la plus simple pour déployer AkiliConnect est d'utiliser la plateforme Vercel :
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mahoudjro04/AkiliConnect)
+
+### Configuration Manuelle
+
+#### 1. Préparer le projet pour la production
+
+```bash
+# Vérifier que le projet compile sans erreur
+pnpm build
+
+# Tester le build en local
+pnpm start
+```
+
+#### 2. Connecter à Vercel
+
+```bash
+# Installer Vercel CLI
+npm i -g vercel
+
+# Se connecter à votre compte
+vercel login
+
+# Déployer le projet
+vercel
+```
+
+#### 3. Variables d'environnement sur Vercel
+
+Dans le dashboard Vercel, configurez les variables suivantes :
+
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+
+
+#### 4. Configuration Supabase pour la Production
+
+1. **Domaines autorisés** : Ajoutez votre domaine Vercel dans Supabase
+   ```
+   Authentication > URL Configuration > Site URL:
+   https://your-domain.vercel.app
+   
+   Redirect URLs:
+   https://your-domain.vercel.app/api/auth/callback
+   ```
+
+2. **CORS** : Autorisez votre domaine dans les paramètres API
+   ```
+   Settings > API > CORS Origins:
+   https://your-domain.vercel.app
+   ```
+
+#### 5. Optimisations pour la Production
+
+##### Performance
+```javascript
+// next.config.mjs - Optimisations déjà configurées
+module.exports = {
+  // Compression automatique
+  compress: true,
+  
+  // Optimisation des images
+  images: {
+    domains: ['your-supabase-url.supabase.co'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  
+  // Headers de sécurité
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+    ]
+  },
+}
+```
+
+##### Base de données
+- Activez **Connection Pooling** sur Supabase
+- Configurez **Row Level Security (RLS)**
+- Optimisez les index pour les requêtes fréquentes
+
+#### 6. Monitoring et Analytics
+
+```bash
+# Vercel Analytics (optionnel)
+pnpm add @vercel/analytics
+
+# Vercel Speed Insights
+pnpm add @vercel/speed-insights
+```
+
+Ajoutez dans `src/app/layout.tsx` :
+```typescript
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
+  )
+}
+```
+
+### Domaine Personnalisé
+
+1. Dans Vercel Dashboard > Domains
+2. Ajoutez votre domaine personnalisé
+3. Configurez les DNS selon les instructions
+4. Mettez à jour `NEXTAUTH_URL` avec le nouveau domaine
+
+### Déploiement Continu
+
+Vercel se connecte automatiquement à votre repository GitHub :
+- ✅ **Push sur `main`** → Déploiement en production
+- ✅ **Pull Request** → Preview deployment automatique
+- ✅ **Rollback** → Restauration rapide en cas de problème
+
+### Troubleshooting
+
+#### Erreurs courantes
+
+1. **Build Failed** - Vérifiez les types TypeScript
+   ```bash
+   pnpm lint
+   pnpm build
+   ```
+
+2. **Environment Variables** - Vérifiez dans Vercel Dashboard
+   ```bash
+   vercel env ls
+   ```
+
+3. **Supabase Connection** - Vérifiez les URLs et domaines autorisés
+
+4. **Authentication Issues** - Vérifiez `NEXTAUTH_URL` et les redirects
+
+#### Logs de déploiement
+```bash
+# Voir les logs de fonction
+vercel logs your-deployment-url
+
+# Logs en temps réel
+vercel logs --follow
+```
+
+### Performance en Production
+
+Votre application devrait atteindre :
+- ⚡ **99+ Performance Score** (Lighthouse)
+- 🎯 **< 2s** Time to Interactive
+- 📱 **100% Responsive** sur tous les appareils
+- 🔒 **A+ Security Headers**
+
 ## 🤝 Contribution
 
 1. **Fork** le projet

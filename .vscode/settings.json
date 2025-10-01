@@ -29,7 +29,5 @@
     "css": "css",
     "scss": "scss"
   },
-  "css.customData": [
-    ".vscode/tailwind.json"
-  ]
+  "css.customData": [".vscode/tailwind.json"]
 }

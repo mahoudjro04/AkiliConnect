@@ -6,6 +6,10 @@ interface NotFoundPageProps {
   params: Promise<{ lang: LocaleType }>
 }
 
+// IMPORTANT : Désactiver la génération statique
+export const dynamic = "force-dynamic"
+export const dynamicParams = true
+
 export default async function NotFoundPage({ params }: NotFoundPageProps) {
   const { lang } = await params
 
